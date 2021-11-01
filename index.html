@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Band</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/fonts/themify-icons-font/themify-icons/themify-icons.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         More
                         <i class="nav-arrow-down ti-arrow-circle-down"></i>
                     </a>
@@ -29,11 +30,15 @@
                 </li>
             </ul>
             <!-- End: nav -->
-            <!-- Begin: search button -->
+            <!-- Search button -->
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
             </div>
-            <!-- End: search button -->
+            <!-- Mobile menu button -->
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
+            </div>
+
             </div>
 
         <div id="slider">
@@ -41,7 +46,6 @@
                 <h2 class="text-heading">Los Angeles</h2>
                 <div class="text-description">The time that we'll never forget.</div>
             </div>
-
         </div>
 
         <div id="content">
@@ -51,15 +55,15 @@
                 <p class="section-subheading">Music is life</p>
                 <p class="about-text">The Jonas Brothers are an American pop rock band. Formed in 2005, they gained popularity from their appearances on the Disney Channel television network. They consist of three brothers: Kevin Jonas, Joe Jonas, and Nick Jonas. Raised in Wyckoff, New Jersey, the Jonas Brothers moved to Little Falls, New Jersey, in 2005, where they wrote their first record that made its Hollywood Records release.The band have released five albums: It's About Time (2006), Jonas Brothers (2007), A Little Bit Longer (2008), Lines, Vines and Trying Times (2009), and Happiness Begins (2019).</p>
                 <div class="row member-list">
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Nick Jonas</p>
                         <img src="/assets/img/band/member1.jpg" alt="Nick Jonas" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Joe Jonas</p>
                         <img src="/assets/img/band/member2.jpg" alt="Joe Jonas" class="member-img">
                     </div>
-                    <div class="col col-third text-center">
+                    <div class="col col-third s-col-full mt-16 text-center">
                         <p class="member-name">Kevin Jonas</p>
                         <img src="/assets/img/band/member3.jpg" alt="Kevin Jonas" class="member-img">
                     </div>
@@ -78,7 +82,7 @@
                         <li>November <span class="quantity">3</span></li>
                     </ul>
                     <div class="row places-list">
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="/assets/img/places/place1.jpg" alt="New York" class="place-img">
                             <div class="place-content">
                                 <h3 class="place-name">New York</h3>
@@ -87,7 +91,7 @@
                                 <button class="buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="/assets/img/places/place2.jpg" alt="Paris" class="place-img">
                             <div class="place-content">
                                 <h3 class="place-name">Paris</h3>
@@ -96,7 +100,7 @@
                                 <button class="buy-btn js-buy-ticket">Buy Tickets</button>
                             </div>
                         </div>
-                        <div class="col col-third">
+                        <div class="col col-third s-col-full mt-16">
                             <img src="/assets/img/places/place3.jpg" alt="San Francisco" class="place-img">
                             <div class="place-content">
                                 <h3 class="place-name">San Francisco</h3>
@@ -224,6 +228,35 @@
         modalContainer.addEventListener('click', function (event) {
             event.stopPropagation()
         })
+
+        var header = document.getElementById('header');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var headerHeight = header.clientHeight;
+        
+        // Dong/mo mobile menu
+        mobileMenu.onclick = function() {
+            var isClosed = header.clientHeight === headerHeight;
+            if (isClosed) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        // Tu dong dong khi chon menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]');
+        for (var i = 0; i < menuItems.length; i++) {
+            var menuItem = menuItems[i];
+            
+            menuItem.onclick = function(event) {
+                var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav');
+                if (isParentMenu) {
+                    event.preventDefault();
+                } else {
+                    header.style.height = null;
+                }
+            }
+        }
     </script>
 
 </body>
