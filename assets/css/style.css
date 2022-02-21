@@ -74,9 +74,6 @@ html {
 }
 
 /* Main */
-#main {
-
-}
 
 #header {
     height: 46px;
@@ -215,10 +212,6 @@ html {
 #slider .text-description {
     font-weight: bolder;
     font-size: 15px;
-}
-
-#content {
-    
 }
 
 #content .content-section {
