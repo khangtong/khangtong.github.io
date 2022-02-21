@@ -1,5 +1,10 @@
 /* Tablet & Mobile */
 @media (max-width: 63.9375em) {
+    .slide {
+        width: 100%;
+        height: auto;
+    }
+
     .buy-btn {
         padding: 16px 15px;
     }

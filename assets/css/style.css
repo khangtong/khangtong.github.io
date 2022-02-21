@@ -183,8 +183,19 @@ html {
 #slider {
     position: relative;
     margin-top: 46px;
-    padding-top: 50%;
-    background: url(/assets/img/slider/slider2.jpg) top center / cover no-repeat;
+}
+
+.slides-wrap {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.slide {
+    flex: 1 0 100%;
+    transition: transform 0.7s ease-out;
+    height: 710px;
 }
 
 #slider .text-content {
@@ -196,7 +207,7 @@ html {
 }
 
 #slider .text-heading {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
     font-weight: 550;
     font-size: 24px;
 }
@@ -503,6 +514,7 @@ html {
 #footer .societies-list a {
     text-decoration: none;
     color: rgba(0, 0, 0, 0.6);
+    padding: 0 6px;
 }
 
 #footer .copyright a:hover,

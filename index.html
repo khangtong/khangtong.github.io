@@ -42,6 +42,11 @@
             </div>
 
         <div id="slider">
+            <div class="slides-wrap">
+                <img src="./assets/img/slider/slider2.jpg" alt="" class="slide">
+                <img src="./assets/img/slider/slider3.jpg" alt="" class="slide">
+                <img src="./assets/img/slider/slider4.jpg" alt="" class="slide">
+            </div>
             <div class="text-content">
                 <h2 class="text-heading">Los Angeles</h2>
                 <div class="text-description">An unforgettable night.</div>
@@ -204,6 +209,32 @@
         const modal = document.querySelector('.js-modal')
         const modalContainer = document.querySelector('.js-modal-container')
         const modalClose = document.querySelector('.js-modal-close')
+
+        // Ham xu ly slider khi load xong website
+        window.addEventListener('load', function() {
+            const slider = document.querySelector('#slider')
+            const sliderWrap = document.querySelector('.slides-wrap')
+            const slide = document.querySelector('.slide')
+            const slides = document.querySelectorAll('.slide')
+            const slidesLength = slides.length
+            let positionX = 0
+            let i = 0
+            
+            setInterval(function() {
+                positionX = positionX - 100
+                slides.forEach(function(slide) {
+                    slide.style = `transform: translateX(${positionX}%)`
+                })
+                i++
+                if (i >= slidesLength) {
+                    i = 0
+                    positionX = 0
+                    slides.forEach(function(slide) {
+                        slide.style.transform = `translateX(0)`
+                    })
+                }
+            }, 3000)
+        })
 
         // Ham hien thi modal mua ve (them class open vao modal)
         function showBuyTickets() {
